@@ -7,17 +7,18 @@ namespace OuterZone
     {
         public Vector Position = Vector.Zero;
         public Vector Velocity = Vector.Zero;
-        public readonly Vector Size = (100, 150);
+        public readonly Vector Size = (1, 2);
 
         public void Update(double dt)
         {
-            Velocity.Y += 1000 * dt;
+            Velocity.Y += 10 * dt;
             Position += dt * Velocity;
         }
 
         public void Draw(Graphics g)
         {
-            g.FillRectangle(Brushes.Red, new RectangleF(Position, Size));
+            var scale = g.ClipBounds.Height / 12.0;
+            g.FillRectangle(Brushes.Red, new RectangleF(scale * Position, scale * Size));
         }
     }
 }
