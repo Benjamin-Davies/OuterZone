@@ -17,8 +17,7 @@ namespace OuterZone
 
         public void Draw(Graphics g)
         {
-            var scale = g.ClipBounds.Height / 12.0;
-            g.FillRectangle(Brushes.Red, new RectangleF(scale * Position, scale * Size));
+            g.FillRectangle(Brushes.Red, new RectangleF(Position, Size));
         }
     }
 }

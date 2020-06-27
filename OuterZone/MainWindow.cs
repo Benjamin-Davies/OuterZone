@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace OuterZone
@@ -21,9 +22,14 @@ namespace OuterZone
 
         private void MainWindow_Paint(object sender, PaintEventArgs e)
         {
-            var g = e.Graphics;
             double dt = frameStopwatch.Elapsed.TotalSeconds;
             frameStopwatch.Restart();
+
+            var g = e.Graphics;
+            var scale = ClientSize.Height / 12f;
+            var matrix = new Matrix();
+            matrix.Scale(scale, scale);
+            g.Transform = matrix;
 
             explorer.Update(dt);
 
