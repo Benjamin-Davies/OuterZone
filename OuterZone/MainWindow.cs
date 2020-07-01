@@ -7,8 +7,9 @@ namespace OuterZone
 {
     public partial class MainWindow : Form
     {
-        Explorer explorer = new Explorer();
-        Stopwatch frameStopwatch = new Stopwatch();
+        readonly Explorer explorer = new Explorer();
+        readonly FloorSection floorSection = new FloorSection();
+        readonly Stopwatch frameStopwatch = new Stopwatch();
 
         public MainWindow()
         {
@@ -32,8 +33,10 @@ namespace OuterZone
             g.Transform = matrix;
 
             explorer.Update(dt);
+            floorSection.Update(dt);
 
             explorer.Draw(g);
+            floorSection.Draw(g);
         }
 
         private void FrameTimer_Tick(object sender, EventArgs e)
