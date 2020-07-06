@@ -14,6 +14,8 @@ namespace OuterZone
         public MainWindow()
         {
             InitializeComponent();
+
+            explorer.Velocity += (0.5, 0);
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -34,6 +36,7 @@ namespace OuterZone
 
             explorer.Update(dt);
             floorSection.Update(dt);
+            explorer.CollideWith(floorSection);
 
             explorer.Draw(g);
             floorSection.Draw(g);
