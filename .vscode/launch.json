@@ -9,7 +9,10 @@
             "name": "mono",
             "request": "launch",
             "program": "${workspaceRoot}/OuterZone/bin/Debug/OuterZone.exe",
-            "preLaunchTask": "${defaultBuildTask}"
+            "preLaunchTask": "${defaultBuildTask}",
+            "env": {
+                "DISPLAY": ":0"
+            }
         }
     ]
 }
