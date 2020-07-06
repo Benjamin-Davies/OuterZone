@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 
-namespace OuterZone
+namespace OuterZone.Entities
 {
-    class Explorer : PhysicsEntity
+    class Explorer : Base.PhysicsEntity
     {
         public override Vector Size => (1, 2);
         public override Brush Fill => Brushes.Red;

@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity.cs" />
-    <Compile Include="Explorer.cs" />
-    <Compile Include="FloorSection.cs" />
+    <Compile Include="Entities/Base/Entity.cs" />
+    <Compile Include="Entities/Base/PhysicsEntity.cs" />
+    <Compile Include="Entities/Explorer.cs" />
+    <Compile Include="Entities/FloorSection.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhysicsEntity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector.cs" />

@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
+using OuterZone.Entities;
+
 namespace OuterZone
 {
     public partial class MainWindow : Form

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OuterZone
+namespace OuterZone.Entities
 {
-    class FloorSection : Entity
+    class FloorSection : Base.Entity
     {
         public override Vector Position { get; set; } = (0, 10);
         public override Vector Size => (8, 2);

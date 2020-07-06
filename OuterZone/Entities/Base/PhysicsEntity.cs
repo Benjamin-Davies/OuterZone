@@ -3,7 +3,7 @@ using System.Linq;
 
 using static OuterZone.Vector;
 
-namespace OuterZone
+namespace OuterZone.Entities.Base
 {
     abstract class PhysicsEntity : Entity
     {
