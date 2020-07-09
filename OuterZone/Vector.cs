@@ -12,11 +12,16 @@ namespace OuterZone
         public double Size => Math.Sqrt(SizeSq);
 
         public static Vector Zero => (0, 0);
+        public static Vector Up => (0, -1);
+        public static Vector Down => (0, 1);
+        public static Vector Left => (-1, 0);
+        public static Vector Right => (1, 0);
         public static double Small => 0.1; // 10 cm or 10 cm/s
 
         public static double Dot(Vector a, Vector b) => a.X * b.X + a.Y * b.Y;
 
         public static Vector operator *(double x, Vector v) => (x * v.X, x * v.Y); 
+        public static Vector operator *(Vector a, Vector b) => (a.X * b.X, a.Y * b.Y); 
         public static Vector operator +(Vector a, Vector b) => (a.X + b.X, a.Y + b.Y); 
         public static Vector operator -(Vector v) => -1 * v;
         public static Vector operator -(Vector a, Vector b) => a + -b;

@@ -16,8 +16,10 @@ namespace OuterZone.Entities.Base
         public override void Update(double dt)
         {
             Velocity += dt * G;
+            // Friction happens when we are touching something
             if (IsTouching) Velocity -= dt * FrictionFactor * Velocity;
-            if (Velocity.SizeSq < Small) Velocity = Zero;
+            // If we are barely moving and touching something, then dont move
+            if (IsTouching && Velocity.SizeSq < Small) Velocity = Zero;
             Position += dt * Velocity;
 
             IsTouching = false;
