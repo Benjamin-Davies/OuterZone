@@ -20,6 +20,36 @@ namespace OuterZone
             explorer.Velocity += (0.5, 0);
         }
 
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.A:
+                case Keys.Left:
+                    explorer.Left = true;
+                    break;
+                case Keys.D:
+                case Keys.Right:
+                    explorer.Right = true;
+                    break;
+            }
+        }
+
+        private void MainWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.A:
+                case Keys.Left:
+                    explorer.Left = false;
+                    break;
+                case Keys.D:
+                case Keys.Right:
+                    explorer.Right = false;
+                    break;
+            }
+        }
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
             frameStopwatch.Start();

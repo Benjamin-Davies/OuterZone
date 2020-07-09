@@ -48,6 +48,8 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "MainWindow";
             this.Text = "Outer Zone";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyUp);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainWindow_Paint);
             this.ResumeLayout(false);
