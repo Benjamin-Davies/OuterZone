@@ -47,6 +47,9 @@ namespace OuterZone
                 case Keys.Right:
                     explorer.Right = false;
                     break;
+                case Keys.Space:
+                    explorer.Jump();
+                    break;
             }
         }
 

@@ -1,5 +1,7 @@
 ﻿using System.Drawing;
 
+using static OuterZone.Vector;
+
 namespace OuterZone.Entities
 {
     class Explorer : Base.PhysicsEntity
@@ -9,6 +11,7 @@ namespace OuterZone.Entities
 
         public readonly double WalkingSpeed = 10;
         public readonly double WalkingAcceleration = 50;
+        public readonly double JumpSpeed = 10;
 
         public bool Left { get; set; }
         public bool Right { get; set; }
@@ -31,6 +34,14 @@ namespace OuterZone.Entities
             double a = (desiredSpeed - v.X) / WalkingSpeed;
             v.X += dt * WalkingAcceleration * a;
             Velocity = v;
+        }
+
+        public void Jump()
+        {
+            if (IsTouching)
+            {
+                Velocity += JumpSpeed * Up;
+            }
         }
     }
 }
