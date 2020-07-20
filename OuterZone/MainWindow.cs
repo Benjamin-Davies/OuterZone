@@ -32,6 +32,10 @@ namespace OuterZone
                 case Keys.Right:
                     explorer.Right = true;
                     break;
+                case Keys.Space:
+                case Keys.Up:
+                    explorer.Jump();
+                    break;
             }
         }
 
@@ -47,9 +51,6 @@ namespace OuterZone
                 case Keys.Right:
                     explorer.Right = false;
                     break;
-                case Keys.Space:
-                    explorer.Jump();
-                    break;
             }
         }
 
@@ -60,7 +61,7 @@ namespace OuterZone
 
         private void MainWindow_Paint(object sender, PaintEventArgs e)
         {
-            double dt = frameStopwatch.Elapsed.TotalSeconds;
+            double dt = 1.5 * frameStopwatch.Elapsed.TotalSeconds;
             frameStopwatch.Restart();
 
             var g = e.Graphics;
