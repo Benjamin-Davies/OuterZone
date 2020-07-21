@@ -10,13 +10,14 @@ namespace OuterZone
     public partial class MainWindow : Form
     {
         readonly Explorer explorer = new Explorer();
-        readonly FloorSection floorSection = new FloorSection();
+        readonly Floor floor = new Floor();
         readonly Stopwatch frameStopwatch = new Stopwatch();
 
         public MainWindow()
         {
             InitializeComponent();
 
+            floor.Position += (0, 10);
             explorer.Velocity += (0.5, 0);
         }
 
@@ -70,12 +71,13 @@ namespace OuterZone
             matrix.Scale(scale, scale);
             g.Transform = matrix;
 
+            floor.Generate((double)ClientSize.Width / scale);
             explorer.Update(dt);
-            floorSection.Update(dt);
-            explorer.CollideWith(floorSection);
+            floor.Update(dt);
+            explorer.CollideWith(floor);
 
             explorer.Draw(g);
-            floorSection.Draw(g);
+            floor.Draw(g);
         }
 
         private void FrameTimer_Tick(object sender, EventArgs e)

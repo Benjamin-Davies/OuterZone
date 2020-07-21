@@ -25,6 +25,14 @@ namespace OuterZone.Entities.Base
             IsTouching = false;
         }
 
+        public void CollideWith(CollectionEntity entity)
+        {
+            foreach (var child in entity.Children)
+            {
+                CollideWith(child);
+            }
+        }
+
         public void CollideWith(Entity entity)
         {
             if (Rectangle.IntersectsWith(entity.Rectangle))

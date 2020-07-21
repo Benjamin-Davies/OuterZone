@@ -48,8 +48,10 @@
   <ItemGroup>
     <Compile Include="Entities\Base\Entity.cs" />
     <Compile Include="Entities\Base\PhysicsEntity.cs" />
+    <Compile Include="Entities\Base\CollectionEntity.cs" />
     <Compile Include="Entities\Explorer.cs" />
     <Compile Include="Entities\FloorSection.cs" />
+    <Compile Include="Entities\Floor.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
