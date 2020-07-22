@@ -18,7 +18,6 @@ namespace OuterZone
             InitializeComponent();
 
             floor.Position += (0, 10);
-            explorer.Velocity += (0.5, 0);
         }
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
@@ -67,14 +66,16 @@ namespace OuterZone
 
             var g = e.Graphics;
             var scale = ClientSize.Height / 12f;
-            var matrix = new Matrix();
-            matrix.Scale(scale, scale);
-            g.Transform = matrix;
 
-            floor.Generate((double)ClientSize.Width / scale);
+            floor.Generate(explorer.Position.X + (double)ClientSize.Width / scale);
             explorer.Update(dt);
             floor.Update(dt);
             explorer.CollideWith(floor);
+
+            var matrix = new Matrix();
+            matrix.Scale(scale, scale);
+            matrix.Translate((float)(3.0 - explorer.Position.X), 0);
+            g.Transform = matrix;
 
             explorer.Draw(g);
             floor.Draw(g);
