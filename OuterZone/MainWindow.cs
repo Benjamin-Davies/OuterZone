@@ -28,6 +28,10 @@ namespace OuterZone
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+            Bounds = Screen.PrimaryScreen.Bounds;
+
             frameStopwatch.Start();
         }
 
