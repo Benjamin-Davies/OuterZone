@@ -5,12 +5,13 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OuterZone.Entities.Scenes
 {
     class GameScene : Scene
     {
-        public readonly Explorer explorer = new Explorer();
+        readonly Explorer explorer = new Explorer();
         readonly Floor floor = new Floor();
 
         public GameScene(ISceneManager sceneManager) : base(sceneManager)
@@ -23,6 +24,7 @@ namespace OuterZone.Entities.Scenes
 
         public override void Update(double dt)
         {
+            dt *= 1.5;
             base.Update(dt);
 
             var scale = SceneManager.ClientSize.Height / 12f;
@@ -41,6 +43,26 @@ namespace OuterZone.Entities.Scenes
             g.Transform = matrix;
 
             base.Draw(g);
+        }
+
+        public override void KeyChange(Keys key, bool down)
+        {
+            switch (key)
+            {
+                case Keys.A:
+                case Keys.Left:
+                    explorer.Left = down;
+                    break;
+                case Keys.D:
+                case Keys.Right:
+                    explorer.Right = down;
+                    break;
+                case Keys.Space:
+                case Keys.Up:
+                    if (down)
+                        explorer.Jump();
+                    break;
+            }
         }
     }
 }

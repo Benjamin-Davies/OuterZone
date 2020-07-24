@@ -23,39 +23,8 @@ namespace OuterZone
             NextScene(typeof(GameScene));
         }
 
-        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.A:
-                case Keys.Left:
-                    ((GameScene) currentScene).explorer.Left = true;
-                    break;
-                case Keys.D:
-                case Keys.Right:
-                    ((GameScene) currentScene).explorer.Right = true;
-                    break;
-                case Keys.Space:
-                case Keys.Up:
-                    ((GameScene) currentScene).explorer.Jump();
-                    break;
-            }
-        }
-
-        private void MainWindow_KeyUp(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.A:
-                case Keys.Left:
-                    ((GameScene) currentScene).explorer.Left = false;
-                    break;
-                case Keys.D:
-                case Keys.Right:
-                    ((GameScene) currentScene).explorer.Right = false;
-                    break;
-            }
-        }
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e) => currentScene.KeyChange(e.KeyCode, true);
+        private void MainWindow_KeyUp(object sender, KeyEventArgs e) => currentScene.KeyChange(e.KeyCode, false);
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
@@ -64,7 +33,7 @@ namespace OuterZone
 
         private void MainWindow_Paint(object sender, PaintEventArgs e)
         {
-            double dt = 1.5 * frameStopwatch.Elapsed.TotalSeconds;
+            double dt = frameStopwatch.Elapsed.TotalSeconds;
             frameStopwatch.Restart();
             var g = e.Graphics;
 
