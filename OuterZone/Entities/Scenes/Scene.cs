@@ -8,7 +8,7 @@ using OuterZone.Entities.Base;
 
 namespace OuterZone.Entities.Scenes
 {
-    abstract class Scene<T> : CollectionEntity
+    public abstract class Scene : CollectionEntity
     {
         public readonly ISceneManager SceneManager;
 
@@ -16,7 +16,5 @@ namespace OuterZone.Entities.Scenes
         {
             SceneManager = sceneManager;
         }
-
-        public abstract Scene<T> CreateScene(T data);
     }
 }

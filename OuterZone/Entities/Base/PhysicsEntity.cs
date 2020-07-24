@@ -5,7 +5,7 @@ using static OuterZone.Vector;
 
 namespace OuterZone.Entities.Base
 {
-    abstract class PhysicsEntity : Entity
+    public abstract class PhysicsEntity : Entity
     {
         public Vector Velocity { get; set; } = Zero;
         public virtual Vector G => (0, 10);

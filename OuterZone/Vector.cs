@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace OuterZone
 {
-    struct Vector
+    public struct Vector
     {
         public double X;
         public double Y;

@@ -4,7 +4,7 @@ using static OuterZone.Vector;
 
 namespace OuterZone.Entities.Base
 {
-    abstract class Entity
+    public abstract class Entity
     {
         public virtual Vector Position { get; set; } = Zero;
         public virtual Vector Size => (1, 1);

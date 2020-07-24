@@ -1,10 +1,13 @@
 ﻿using Microsoft.SqlServer.Server;
+using System;
+using System.Drawing;
 
 namespace OuterZone.Entities.Scenes
 {
-    interface ISceneManager
+    public interface ISceneManager
     {
-        void NextScene<S>() where S : Scene<object>;
-        void NextScene<S, T>(T data) where S : Scene<T>;
+        void NextScene(Type scene, params object[] data);
+
+        Size ClientSize { get; }
     }
 }

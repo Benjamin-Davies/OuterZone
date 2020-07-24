@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace OuterZone.Entities.Base
 {
-    class CollectionEntity : Entity
+    public class CollectionEntity : Entity
     {
         public readonly List<Entity> Children = new List<Entity>();
         public override Brush Fill => Brushes.Transparent;
