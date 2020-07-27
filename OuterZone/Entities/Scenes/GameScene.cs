@@ -27,22 +27,30 @@ namespace OuterZone.Entities.Scenes
             dt *= 1.5;
             base.Update(dt);
 
-            var scale = SceneManager.ClientSize.Height / 12f;
+            var scale = Size.Y / 12;
 
             floor.Generate(explorer.Position.X + Size.X / scale);
             explorer.CollideWith(floor);
+
+            if (explorer.Position.Y > 12)
+            {
+                SceneManager.NextScene(typeof(DeathScene));
+            }
         }
 
         public override void Draw(Graphics g)
         {
             var scale = (float)Size.Y / 12;
 
+            var oldMatrix = g.Transform;
             var matrix = new Matrix();
             matrix.Scale(scale, scale);
             matrix.Translate((float)(3.0 - explorer.Position.X), 0);
             g.Transform = matrix;
 
             base.Draw(g);
+
+            g.Transform = oldMatrix;
         }
 
         public override void KeyChange(Keys key, bool down)

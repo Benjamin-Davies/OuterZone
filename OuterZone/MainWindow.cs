@@ -58,6 +58,9 @@ namespace OuterZone
             {
                 if (param.ParameterType == typeof(ISceneManager))
                     return this;
+                if (param.ParameterType == typeof(Scene))
+                    return currentScene;
+
                 dataEnumerator.MoveNext();
                 return dataEnumerator.Current;
             }).ToArray();
