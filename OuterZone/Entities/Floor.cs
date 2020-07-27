@@ -12,7 +12,7 @@ namespace OuterZone.Entities
 
         private double NextPosition = -20;
         private double TileProbability = InitialProbability;
-        private Random Random = new Random();
+        private readonly Random Random = new Random();
 
         public void Generate(double rightEdge)
         {
