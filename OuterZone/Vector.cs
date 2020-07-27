@@ -33,5 +33,6 @@ namespace OuterZone
 
         public static implicit operator SizeF(Vector v) => new SizeF((float)v.X, (float)v.Y);
         public static explicit operator Vector(SizeF p) => (p.Width, p.Height);
+        public static explicit operator Vector(Size p) => (p.Width, p.Height);
     }
 }

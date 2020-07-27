@@ -12,6 +12,7 @@ namespace OuterZone.Entities.Scenes
     public abstract class Scene : CollectionEntity
     {
         public readonly ISceneManager SceneManager;
+        public override Vector Size => (Vector)SceneManager.ClientSize;
 
         public Scene(ISceneManager sceneManager)
         {

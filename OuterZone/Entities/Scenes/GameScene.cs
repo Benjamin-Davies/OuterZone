@@ -29,13 +29,13 @@ namespace OuterZone.Entities.Scenes
 
             var scale = SceneManager.ClientSize.Height / 12f;
 
-            floor.Generate(explorer.Position.X + (double)SceneManager.ClientSize.Width / scale);
+            floor.Generate(explorer.Position.X + Size.X / scale);
             explorer.CollideWith(floor);
         }
 
         public override void Draw(Graphics g)
         {
-            var scale = SceneManager.ClientSize.Height / 12f;
+            var scale = (float)Size.Y / 12;
 
             var matrix = new Matrix();
             matrix.Scale(scale, scale);
