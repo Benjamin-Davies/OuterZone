@@ -5,7 +5,7 @@ namespace OuterZone.Entities
 {
     class Floor : CollectionEntity
     {
-        private const int MaxListCount = 10;
+        private const int MaxListCount = 20;
         private const int DiscardCount = 5;
         private const double InitialProbability = 0.1;
         private const double FirstGap = 2;
