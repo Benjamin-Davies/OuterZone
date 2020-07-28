@@ -22,6 +22,7 @@ namespace OuterZone
 
         public static Vector operator *(double x, Vector v) => (x * v.X, x * v.Y); 
         public static Vector operator *(Vector a, Vector b) => (a.X * b.X, a.Y * b.Y); 
+        public static Vector operator /(Vector v, double x) => (v.X / x, v.Y / x); 
         public static Vector operator +(Vector a, Vector b) => (a.X + b.X, a.Y + b.Y); 
         public static Vector operator -(Vector v) => -1 * v;
         public static Vector operator -(Vector a, Vector b) => a + -b;

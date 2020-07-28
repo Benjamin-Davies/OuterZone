@@ -10,6 +10,7 @@ namespace OuterZone.Entities.Base
         public virtual Vector Size => (1, 1);
         public virtual Brush Fill => Brushes.Black;
         public RectangleF Rectangle => new RectangleF(Position, Size);
+        public virtual Font Font => MainWindow.DefaultFont;
 
         public virtual void Update(double dt) { }
 

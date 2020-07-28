@@ -9,10 +9,26 @@ namespace OuterZone.Entities.Scenes
         private static readonly string Message = "You Died";
 
         private readonly Scene GameScene;
+        private readonly Button TryAgainButton;
+        private readonly Button ExitToMenuButton;
 
         public DeathScene(ISceneManager sceneManager, Scene gameScene) : base(sceneManager)
         {
             GameScene = gameScene;
+
+            TryAgainButton = new Button
+            {
+                Text = "Try Again",
+                Position = (-4, 0),
+            };
+            Children.Add(TryAgainButton);
+
+            ExitToMenuButton = new Button
+            {
+                Text = "Exit to Menu",
+                Position = (-4, 1.5),
+            };
+            Children.Add(ExitToMenuButton);
         }
 
         public override void Draw(Graphics g)

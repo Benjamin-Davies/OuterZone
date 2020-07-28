@@ -14,7 +14,6 @@ namespace OuterZone.Entities.Scenes
     {
         public readonly ISceneManager SceneManager;
         public override Vector Size => (Vector)SceneManager.ClientSize;
-        public Font Font => MainWindow.DefaultFont;
 
         public Scene(ISceneManager sceneManager)
         {
