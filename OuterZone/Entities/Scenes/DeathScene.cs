@@ -21,6 +21,7 @@ namespace OuterZone.Entities.Scenes
                 Text = "Try Again",
                 Position = (-4, 0),
             };
+            TryAgainButton.OnClick += TryAgainButton_OnClick;
             Children.Add(TryAgainButton);
 
             ExitToMenuButton = new Button
@@ -28,7 +29,18 @@ namespace OuterZone.Entities.Scenes
                 Text = "Exit to Menu",
                 Position = (-4, 1.5),
             };
+            ExitToMenuButton.OnClick += ExitToMenuButton_OnClick;
             Children.Add(ExitToMenuButton);
+        }
+
+        private void ExitToMenuButton_OnClick(object sender, Vector e)
+        {
+            SceneManager.NextScene(typeof(WelcomeScreen));
+        }
+
+        private void TryAgainButton_OnClick(object sender, Vector e)
+        {
+            SceneManager.NextScene(typeof(GameScene));
         }
 
         public override void Draw(Graphics g)

@@ -11,6 +11,8 @@ namespace OuterZone
         public double SizeSq => Dot(this, this);
         public double Size => Math.Sqrt(SizeSq);
 
+        public override string ToString() => $"[{X}, {Y}]";
+
         public static Vector Zero => (0, 0);
         public static Vector Up => (0, -1);
         public static Vector Down => (0, 1);
@@ -31,6 +33,7 @@ namespace OuterZone
 
         public static implicit operator PointF(Vector v) => new PointF((float)v.X, (float)v.Y);
         public static explicit operator Vector(PointF p) => (p.X, p.Y);
+        public static explicit operator Vector(Point p) => (p.X, p.Y);
 
         public static implicit operator SizeF(Vector v) => new SizeF((float)v.X, (float)v.Y);
         public static explicit operator Vector(SizeF p) => (p.Width, p.Height);

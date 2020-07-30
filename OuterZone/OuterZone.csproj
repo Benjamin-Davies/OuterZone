@@ -53,6 +53,7 @@
     <Compile Include="Entities\Explorer.cs" />
     <Compile Include="Entities\FloorSection.cs" />
     <Compile Include="Entities\Floor.cs" />
+    <Compile Include="Entities\Scenes\WelcomeScene.cs" />
     <Compile Include="Entities\Scenes\DeathScene.cs" />
     <Compile Include="Entities\Scenes\GameScene.cs" />
     <Compile Include="Entities\Scenes\ISceneManager.cs" />
