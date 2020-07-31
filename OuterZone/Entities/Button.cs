@@ -10,7 +10,8 @@ namespace OuterZone.Entities
 {
     class Button : Entity
     {
-        public override Brush Fill => Brushes.LightGray;
+        public bool Hover { get; private set; } = false;
+        public override Brush Fill => Hover ? Brushes.LightBlue : Brushes.LightGray;
         public override Font Font => new Font(base.Font.FontFamily, 0.5f);
         public override Vector Size => (8, 1);
 
@@ -34,6 +35,11 @@ namespace OuterZone.Entities
             {
                 OnClick?.Invoke(this, mousePosition);
             }
-        } 
+        }
+
+        public virtual void CheckHover(Vector mousePosition)
+        {
+            Hover = Rectangle.Contains(mousePosition);
+        }
     }
 }

@@ -36,5 +36,20 @@ namespace OuterZone.Entities.Scenes
                 }
             }
         }
+
+        public virtual void CheckHover(Vector mousePosition)
+        {
+            mousePosition -= Size / 2;
+            var scale = (float)Size.Y / 12;
+            mousePosition /= scale;
+
+            foreach (var child in Children)
+            {
+                if (child.GetType() == typeof(Button))
+                {
+                    ((Button)child).CheckHover(mousePosition);
+                }
+            }
+        }
     }
 }

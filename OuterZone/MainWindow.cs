@@ -67,5 +67,10 @@ namespace OuterZone
             }).ToArray();
             currentScene = constructor.Invoke(parameters) as Scene;
         }
+
+        private void MainWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            currentScene.CheckHover((Vector)e.Location);
+        }
     }
 }
