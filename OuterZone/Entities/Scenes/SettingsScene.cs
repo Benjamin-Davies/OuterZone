@@ -5,15 +5,15 @@ using System.Windows.Forms;
 
 namespace OuterZone.Entities.Scenes
 {
-    class WelcomeScreen : Scene
+    class SettingsScene : Scene
     {
-        private string Message => Assembly.GetAssembly(GetType()).GetName().Name;
+        private string Message => "Settings";
 
         private readonly Button PlayButton;
         private readonly Button SettingsButton;
         private readonly Button QuitGameButton;
 
-        public WelcomeScreen(ISceneManager sceneManager) : base(sceneManager)
+        public SettingsScene(ISceneManager sceneManager) : base(sceneManager)
         {
             PlayButton = new Button
             {
@@ -42,7 +42,7 @@ namespace OuterZone.Entities.Scenes
 
         private void SettingsButton_OnClick(object sender, Vector e)
         {
-            SceneManager.NextScene(typeof(SettingsScene));
+            throw new System.NotImplementedException();
         }
 
         private void QuitGameButton_OnClick(object sender, Vector e)
