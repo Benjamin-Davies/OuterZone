@@ -40,7 +40,9 @@ namespace OuterZone
         {
             double dt = frameStopwatch.Elapsed.TotalSeconds;
             frameStopwatch.Restart();
+
             var g = e.Graphics;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 
             currentScene.Update(dt);
             currentScene.Draw(g);
