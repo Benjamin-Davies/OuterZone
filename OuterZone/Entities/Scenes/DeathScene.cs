@@ -35,7 +35,7 @@ namespace OuterZone.Entities.Scenes
 
         private void ExitToMenuButton_OnClick(object sender, Vector e)
         {
-            SceneManager.NextScene(typeof(WelcomeScreen));
+            SceneManager.NextScene(typeof(WelcomeScene));
         }
 
         private void TryAgainButton_OnClick(object sender, Vector e)

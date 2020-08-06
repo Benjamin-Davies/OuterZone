@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace OuterZone.Entities.Scenes
 {
-    class WelcomeScreen : Scene
+    class WelcomeScene : Scene
     {
         private string Message => Assembly.GetAssembly(GetType()).GetName().Name;
 
@@ -13,7 +13,7 @@ namespace OuterZone.Entities.Scenes
         private readonly Button SettingsButton;
         private readonly Button QuitGameButton;
 
-        public WelcomeScreen(ISceneManager sceneManager) : base(sceneManager)
+        public WelcomeScene(ISceneManager sceneManager) : base(sceneManager)
         {
             PlayButton = new Button
             {

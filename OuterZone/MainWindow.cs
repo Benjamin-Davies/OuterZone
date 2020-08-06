@@ -20,7 +20,7 @@ namespace OuterZone
         {
             InitializeComponent();
 
-            NextScene(typeof(WelcomeScreen));
+            NextScene(typeof(WelcomeScene));
         }
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e) => currentScene.KeyChange(e.KeyCode, true);

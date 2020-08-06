@@ -9,50 +9,22 @@ namespace OuterZone.Entities.Scenes
     {
         private string Message => "Settings";
 
-        private readonly Button PlayButton;
-        private readonly Button SettingsButton;
-        private readonly Button QuitGameButton;
+        private readonly Button ExitToMenuButton;
 
         public SettingsScene(ISceneManager sceneManager) : base(sceneManager)
         {
-            PlayButton = new Button
+            ExitToMenuButton = new Button
             {
-                Text = "Play",
-                Position = (-4, 0),
-            };
-            PlayButton.OnClick += PlayButton_OnClick;
-            Children.Add(PlayButton);
-
-            SettingsButton = new Button
-            {
-                Text = "Settings",
-                Position = (-4, 1.5),
-            };
-            SettingsButton.OnClick += SettingsButton_OnClick;
-            Children.Add(SettingsButton);
-
-            QuitGameButton = new Button
-            {
-                Text = "Quit Game",
+                Text = "Exit to Menu",
                 Position = (-4, 3),
             };
-            QuitGameButton.OnClick += QuitGameButton_OnClick;
-            Children.Add(QuitGameButton);
+            ExitToMenuButton.OnClick += ExitToMenuButton_OnClick;
+            Children.Add(ExitToMenuButton);
         }
 
-        private void SettingsButton_OnClick(object sender, Vector e)
+        private void ExitToMenuButton_OnClick(object sender, Vector e)
         {
-            throw new System.NotImplementedException();
-        }
-
-        private void QuitGameButton_OnClick(object sender, Vector e)
-        {
-            Application.Exit();
-        }
-
-        private void PlayButton_OnClick(object sender, Vector e)
-        {
-            SceneManager.NextScene(typeof(GameScene));
+            SceneManager.NextScene(typeof(WelcomeScene));
         }
 
         public override void Draw(Graphics g)
