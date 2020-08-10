@@ -39,8 +39,6 @@ namespace OuterZone.Entities.Scenes
             };
             QuitGameButton.OnClick += QuitGameButton_OnClick;
             Children.Add(QuitGameButton);
-
-            Debug.WriteLine(HighScores.DefaultInstance.GetHighScores());
         }
 
         private void SettingsButton_OnClick(object sender, Vector e)
