@@ -15,6 +15,12 @@ namespace OuterZone
         [STAThread]
         static async Task Main()
         {
+            await HighScores.DefaultInstance.SubmitScore(new HighScore
+            {
+                Username = "Anonymous",
+                Score = new Random().Next(1000),
+            });
+
             var highScores = await HighScores.DefaultInstance.GetHighScores();
             foreach (var s in highScores)
                 Console.WriteLine($"{s.Username}: {s.Score}");

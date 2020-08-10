@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using OuterZone.Properties;
 
 namespace OuterZone
@@ -25,18 +27,34 @@ namespace OuterZone
         }
 
         private readonly HttpClient httpClient;
+        private readonly JsonSerializerSettings jsonSettings;
         private string databaseUrl = $"https://firestore.googleapis.com/v1/projects/{Resources.FirebaseProject}/databases/(default)";
 
         private HighScores()
         {
             httpClient = new HttpClient();
+            jsonSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy(),
+                },
+            };
         }
 
         async public Task<List<HighScore>> GetHighScores()
         {
             var highScoresJson = await httpClient.GetStringAsync($"{databaseUrl}/documents/high-scores");
-            var highScores = JsonConvert.DeserializeObject<DocumentsList<HighScoreDocument>>(highScoresJson);
+            var highScores = JsonConvert.DeserializeObject<DocumentsList<HighScoreDocument>>(highScoresJson, jsonSettings);
             return highScores.Documents.Select(s => (HighScore) s).ToList();
+        }
+
+        async public Task SubmitScore(HighScore score)
+        {
+            var scoreDocument = (HighScoreDocument) score;
+            var scoreJson = JsonConvert.SerializeObject(scoreDocument, jsonSettings);
+            var content = new StringContent(scoreJson, Encoding.UTF8, "application/json");
+            var res = await httpClient.PostAsync($"{databaseUrl}/documents/high-scores", content);
         }
 
 #region Api Classes
@@ -52,6 +70,8 @@ namespace OuterZone
 
             public static implicit operator string(StringField field)
                 => field.StringValue;
+            public static implicit operator StringField(string value)
+                => new StringField { StringValue = value };
         }
 
         private class IntegerField
@@ -60,6 +80,8 @@ namespace OuterZone
 
             public static implicit operator int(IntegerField field)
                 => field.IntegerValue;
+            public static implicit operator IntegerField(int value)
+                => new IntegerField { IntegerValue = value };
         }
 
         private class HighScoreDocument
@@ -78,14 +100,24 @@ namespace OuterZone
                         Username = doc.Fields.Username,
                         Score = doc.Fields.Score,
                     };
+
+            public static explicit operator HighScoreDocument(HighScore doc)
+                => new HighScoreDocument
+                    {
+                        Fields = new HighScoreDocument.HighScoreFields
+                        {
+                            Username = doc.Username,
+                            Score = doc.Score,
+                        },
+                    };
         }
 
 #endregion
+    }
 
-        public class HighScore
-        {
-            public string Username;
-            public int Score;
-        }
+    public class HighScore
+    {
+        public string Username;
+        public int Score;
     }
 }
