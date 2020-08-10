@@ -13,9 +13,11 @@ namespace OuterZone
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static async Task Main()
         {
-            Debug.WriteLine(HighScores.DefaultInstance.GetHighScores());
+            var highScores = await HighScores.DefaultInstance.GetHighScores();
+            foreach (var s in highScores)
+                Console.WriteLine($"{s.Username}: {s.Score}");
 
             // Application.EnableVisualStyles();
             // Application.SetCompatibleTextRenderingDefault(false);
