@@ -12,6 +12,7 @@ namespace OuterZone.Entities.Scenes
 
         private readonly Button PlayButton;
         private readonly Button SettingsButton;
+        private readonly Button HighScoresButton;
         private readonly Button QuitGameButton;
 
         public WelcomeScene(ISceneManager sceneManager) : base(sceneManager)
@@ -19,7 +20,7 @@ namespace OuterZone.Entities.Scenes
             PlayButton = new Button
             {
                 Text = "Play",
-                Position = (-4, 0),
+                Position = (-4, -1),
             };
             PlayButton.OnClick += PlayButton_OnClick;
             Children.Add(PlayButton);
@@ -27,18 +28,31 @@ namespace OuterZone.Entities.Scenes
             SettingsButton = new Button
             {
                 Text = "Settings",
-                Position = (-4, 1.5),
+                Position = (-4, 0.5),
             };
             SettingsButton.OnClick += SettingsButton_OnClick;
             Children.Add(SettingsButton);
 
+            HighScoresButton = new Button
+            {
+                Text = "High Scores",
+                Position = (-4, 2),
+            };
+            HighScoresButton.OnClick += HighScoresButton_OnClick;
+            Children.Add(HighScoresButton);
+
             QuitGameButton = new Button
             {
                 Text = "Quit Game",
-                Position = (-4, 3),
+                Position = (-4, 3.5),
             };
             QuitGameButton.OnClick += QuitGameButton_OnClick;
             Children.Add(QuitGameButton);
+        }
+
+        private void HighScoresButton_OnClick(object sender, Vector e)
+        {
+            SceneManager.NextScene(typeof(HighScoresScene));
         }
 
         private void SettingsButton_OnClick(object sender, Vector e)
