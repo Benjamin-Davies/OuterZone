@@ -12,11 +12,12 @@ namespace OuterZone.Entities.Scenes
     class HighScoresScene : Scene
     {
         private string Message => "High Scores";
+        private string LoadingText => "Loading...";
 
         private readonly Button ExitToMenuButton;
 
         private const int HighScoreCount = 5;
-        private List<HighScore> HighScores = new List<HighScore>();
+        private List<HighScore> HighScores;
 
         public HighScoresScene(ISceneManager sceneManager) : base(sceneManager)
         {
@@ -55,10 +56,18 @@ namespace OuterZone.Entities.Scenes
             g.DrawString(Message, titleFont, Brushes.White, new PointF(titleSize.Width / -2, -2 - titleSize.Height));
 
             var scoreFont = new Font(Font.FontFamily, 0.5f);
-            for (int i = 0; i < HighScores.Count && i < HighScoreCount; i++)
+            if (HighScores != null)
             {
-                g.DrawString(HighScores[i].Username, scoreFont, Brushes.WhiteSmoke, new PointF(-4, -1.7f + 0.7f * i));
-                g.DrawString(HighScores[i].Score.ToString(), scoreFont, Brushes.WhiteSmoke, new PointF(2.5f, -1.7f + 0.7f * i));
+                for (int i = 0; i < HighScores.Count && i < HighScoreCount; i++)
+                {
+                    g.DrawString(HighScores[i].Username, scoreFont, Brushes.WhiteSmoke, new PointF(-4, -1.7f + 0.7f * i));
+                    g.DrawString(HighScores[i].Score.ToString(), scoreFont, Brushes.WhiteSmoke, new PointF(2.5f, -1.7f + 0.7f * i));
+                }
+            }
+            else
+            {
+                var loadingSize = g.MeasureString(LoadingText, scoreFont);
+                g.DrawString(LoadingText, scoreFont, Brushes.WhiteSmoke, new PointF(loadingSize.Width / -2, -1.7f));
             }
 
             base.Draw(g);
