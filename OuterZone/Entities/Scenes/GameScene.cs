@@ -14,6 +14,8 @@ namespace OuterZone.Entities.Scenes
         readonly Explorer explorer = new Explorer();
         readonly Floor floor = new Floor();
 
+        public int Score => (int)(explorer.Position.X * 10);
+
         public GameScene(ISceneManager sceneManager) : base(sceneManager)
         {
             floor.Position += (0, 10);
@@ -51,6 +53,9 @@ namespace OuterZone.Entities.Scenes
             base.Draw(g);
 
             g.Transform = oldMatrix;
+
+            var scoreFont = new Font(Font.FontFamily, 24f);
+            g.DrawString($"Score: {Score}", scoreFont, Brushes.White, new PointF(20, 20));
         }
 
         public override void KeyChange(Keys key, bool down)
