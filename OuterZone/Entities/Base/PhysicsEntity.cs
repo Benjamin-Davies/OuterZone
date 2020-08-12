@@ -53,11 +53,12 @@ namespace OuterZone.Entities.Base
                 if (right == min)
                     CollideWithEdge(Rectangle.Right, entity.Rectangle.Left, (1, 0));
                 if (bottom == min)
+                {
                     CollideWithEdge(Rectangle.Bottom, entity.Rectangle.Top, (0, 1));
+                    IsTouching = true;
+                }
                 if (left == min)
                     CollideWithEdge(entity.Rectangle.Right, Rectangle.Left, (-1, 0));
-
-                IsTouching = true;
             }
         }
 

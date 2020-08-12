@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using OuterZone.Properties;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Windows.Forms;
@@ -9,10 +10,19 @@ namespace OuterZone.Entities.Scenes
     {
         private string Message => "Settings";
 
+        private readonly TextInput UsernameInput;
         private readonly Button ExitToMenuButton;
 
         public SettingsScene(ISceneManager sceneManager) : base(sceneManager)
         {
+            UsernameInput = new TextInput
+            {
+                Text = Settings.Default.Username,
+                Position = (-4, -1),
+            };
+            UsernameInput.OnChange += UsernameInput_OnChange;
+            Children.Add(UsernameInput);
+
             ExitToMenuButton = new Button
             {
                 Text = "Exit to Menu",
@@ -20,6 +30,11 @@ namespace OuterZone.Entities.Scenes
             };
             ExitToMenuButton.OnClick += ExitToMenuButton_OnClick;
             Children.Add(ExitToMenuButton);
+        }
+
+        private void UsernameInput_OnChange(object sender, string e)
+        {
+            Settings.Default.Username = e;
         }
 
         private void ExitToMenuButton_OnClick(object sender, Vector e)

@@ -20,7 +20,19 @@ namespace OuterZone.Entities.Scenes
             SceneManager = sceneManager;
         }
 
-        public virtual void KeyChange(Keys key, bool down) { }
+        public virtual void KeyChange(Keys key, bool down, bool shift)
+        {
+            if (down)
+            {
+                foreach (var child in Children)
+                {
+                    if (child.GetType() == typeof(TextInput))
+                    {
+                        ((TextInput)child).KeyDown(key, shift);
+                    }
+                }
+            }
+        }
 
         public virtual void MouseDown(Vector mousePosition)
         {

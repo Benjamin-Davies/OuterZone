@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using OuterZone.Properties;
+using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OuterZone.Entities.Scenes
@@ -8,13 +10,15 @@ namespace OuterZone.Entities.Scenes
     {
         private static readonly string Message = "You Died";
 
-        private readonly Scene GameScene;
+        private readonly GameScene GameScene;
         private readonly Button TryAgainButton;
         private readonly Button ExitToMenuButton;
 
         public DeathScene(ISceneManager sceneManager, Scene gameScene) : base(sceneManager)
         {
-            GameScene = gameScene;
+            GameScene = gameScene as GameScene;
+
+            SubmitScore();
 
             TryAgainButton = new Button
             {
@@ -31,6 +35,18 @@ namespace OuterZone.Entities.Scenes
             };
             ExitToMenuButton.OnClick += ExitToMenuButton_OnClick;
             Children.Add(ExitToMenuButton);
+        }
+
+        private void SubmitScore()
+        {
+            Task.Run(async () =>
+            {
+                await HighScores.DefaultInstance.SubmitScore(new HighScore
+                {
+                    Username = Settings.Default.Username,
+                    Score = GameScene.Score,
+                });
+            });
         }
 
         private void ExitToMenuButton_OnClick(object sender, Vector e)

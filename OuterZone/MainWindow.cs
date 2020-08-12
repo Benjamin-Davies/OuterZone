@@ -23,8 +23,8 @@ namespace OuterZone
             NextScene(typeof(WelcomeScene));
         }
 
-        private void MainWindow_KeyDown(object sender, KeyEventArgs e) => currentScene.KeyChange(e.KeyCode, true);
-        private void MainWindow_KeyUp(object sender, KeyEventArgs e) => currentScene.KeyChange(e.KeyCode, false);
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e) => currentScene.KeyChange(e.KeyCode, true, e.Shift);
+        private void MainWindow_KeyUp(object sender, KeyEventArgs e) => currentScene.KeyChange(e.KeyCode, false, e.Shift);
         private void MainWindow_MouseDown(object sender, MouseEventArgs e) => currentScene.MouseDown((Vector)e.Location);
 
         private void MainWindow_Load(object sender, EventArgs e)

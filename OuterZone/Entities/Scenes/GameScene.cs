@@ -58,7 +58,7 @@ namespace OuterZone.Entities.Scenes
             g.DrawString($"Score: {Score}", scoreFont, Brushes.White, new PointF(20, 20));
         }
 
-        public override void KeyChange(Keys key, bool down)
+        public override void KeyChange(Keys key, bool down, bool shift)
         {
             switch (key)
             {
