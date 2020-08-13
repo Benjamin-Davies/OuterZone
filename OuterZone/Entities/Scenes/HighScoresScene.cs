@@ -16,7 +16,7 @@ namespace OuterZone.Entities.Scenes
 
         private readonly Button ExitToMenuButton;
 
-        private const int HighScoreCount = 5;
+        private const int HighScoreCount = 10;
         private List<HighScore> HighScores;
 
         public HighScoresScene(ISceneManager sceneManager) : base(sceneManager)
@@ -24,7 +24,7 @@ namespace OuterZone.Entities.Scenes
             ExitToMenuButton = new Button
             {
                 Text = "Exit to Menu",
-                Position = (-4, 2.5),
+                Position = (-4, 3.5),
             };
             ExitToMenuButton.OnClick += ExitToMenuButton_OnClick;
             Children.Add(ExitToMenuButton);
@@ -55,13 +55,13 @@ namespace OuterZone.Entities.Scenes
             var titleSize = g.MeasureString(Message, titleFont);
             g.DrawString(Message, titleFont, Brushes.White, new PointF(titleSize.Width / -2, -2 - titleSize.Height));
 
-            var scoreFont = new Font(Font.FontFamily, 0.5f);
+            var scoreFont = new Font(Font.FontFamily, 0.3f);
             if (HighScores != null)
             {
                 for (int i = 0; i < HighScores.Count && i < HighScoreCount; i++)
                 {
-                    g.DrawString(HighScores[i].Username, scoreFont, Brushes.WhiteSmoke, new PointF(-4, -1.7f + 0.7f * i));
-                    g.DrawString(HighScores[i].Score.ToString(), scoreFont, Brushes.WhiteSmoke, new PointF(2.5f, -1.7f + 0.7f * i));
+                    g.DrawString(HighScores[i].Username, scoreFont, Brushes.WhiteSmoke, new PointF(-4, -2f + 0.5f * i));
+                    g.DrawString(HighScores[i].Score.ToString(), scoreFont, Brushes.WhiteSmoke, new PointF(2.5f, -2f + 0.5f * i));
                 }
             }
             else
