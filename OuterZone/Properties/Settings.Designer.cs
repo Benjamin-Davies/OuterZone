@@ -34,5 +34,17 @@ namespace OuterZone.Properties {
                 this["Username"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CompletedTutorial {
+            get {
+                return ((bool)(this["CompletedTutorial"]));
+            }
+            set {
+                this["CompletedTutorial"] = value;
+            }
+        }
     }
 }

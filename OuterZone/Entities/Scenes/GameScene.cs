@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OuterZone.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -13,6 +14,7 @@ namespace OuterZone.Entities.Scenes
     {
         readonly Explorer explorer = new Explorer();
         readonly Floor floor = new Floor();
+        readonly Tutorial tutorial;
 
         public int Score => (int)(explorer.Position.X * 10);
 
@@ -22,6 +24,11 @@ namespace OuterZone.Entities.Scenes
 
             Children.Add(explorer);
             Children.Add(floor);
+
+            if (!Settings.Default.CompletedTutorial)
+            {
+                tutorial = new Tutorial(explorer);
+            }
         }
 
         public override void Update(double dt)
@@ -38,6 +45,8 @@ namespace OuterZone.Entities.Scenes
             {
                 SceneManager.NextScene(typeof(DeathScene));
             }
+
+            tutorial?.Update(dt);
         }
 
         public override void Draw(Graphics g)
@@ -56,6 +65,8 @@ namespace OuterZone.Entities.Scenes
 
             var scoreFont = new Font(Font.FontFamily, 24f);
             g.DrawString($"Score: {Score}", scoreFont, Brushes.White, new PointF(20, 20));
+
+            tutorial?.Draw(g);
         }
 
         public override void KeyChange(Keys key, bool down, bool shift)

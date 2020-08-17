@@ -5,5 +5,8 @@
     <Setting Name="Username" Type="System.String" Scope="User">
       <Value Profile="(Default)">Guest</Value>
     </Setting>
+    <Setting Name="CompletedTutorial" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
