@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Reflection;
@@ -10,6 +11,7 @@ namespace OuterZone.Entities.Scenes
     {
         private string Message => Assembly.GetAssembly(GetType()).GetName().Name;
 
+        private readonly Background Background;
         private readonly Button PlayButton;
         private readonly Button SettingsButton;
         private readonly Button HighScoresButton;
@@ -17,6 +19,12 @@ namespace OuterZone.Entities.Scenes
 
         public WelcomeScene(ISceneManager sceneManager) : base(sceneManager)
         {
+            Background = new Background
+            {
+                Random = new Random(),
+            };
+            Children.Add(Background);
+
             PlayButton = new Button
             {
                 Text = "Play",
@@ -70,6 +78,13 @@ namespace OuterZone.Entities.Scenes
             SceneManager.NextScene(typeof(GameScene));
         }
 
+        public override void Update(double dt)
+        {
+            Background.PlayerPosition += 10 * dt;
+
+            base.Update(dt);
+        }
+
         public override void Draw(Graphics g)
         {
             var scale = (float)Size.Y / 12;
@@ -79,12 +94,14 @@ namespace OuterZone.Entities.Scenes
             matrix.Scale(scale, scale);
             g.Transform = matrix;
 
+            Background.ScreenSize = Size / scale;
+            Background.Position = Background.Size / -2;
+
+            base.Draw(g);
 
             var titleFont = new Font(Font.FontFamily, 1);
             var titleSize = g.MeasureString(Message, titleFont);
             g.DrawString(Message, titleFont, Brushes.White, new PointF(titleSize.Width / -2, -2 - titleSize.Height));
-
-            base.Draw(g);
 
             g.Transform = oldMatrix;
         }

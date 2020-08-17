@@ -8,7 +8,7 @@ namespace OuterZone.Entities
         private const int MaxListCount = 20;
         private const int DiscardCount = 5;
         private const double InitialProbability = 0.1;
-        private const double FirstGap = 2;
+        private const double FirstGap = 5;
 
         private double NextPosition = -20;
         private double TileProbability = InitialProbability;
