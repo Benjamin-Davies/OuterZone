@@ -23,14 +23,16 @@ namespace OuterZone.Entities
 
         public override void Update(double dt)
         {
-            while (PlayerPosition > lastPlacePosition)
+            while (PlayerPosition > lastPlacePosition && Size.SizeSq > 0)
             {
                 Children.Add(new BackgroundObject
                 {
+                    Alpha = Random.Next(20, 100),
+                    Rate = 1 / (2 + 3*Random.NextDouble()),
                     Position = Position + Size * (1, Random.NextDouble()),
                 });
 
-                lastPlacePosition += 1;
+                lastPlacePosition += 3;
             }
 
             var deltaPosition = PlayerPosition - lastPlayerPosition;
@@ -38,13 +40,15 @@ namespace OuterZone.Entities
 
             foreach (var child in Children)
             {
-                child.Position -= (0.5 * deltaPosition, 0);
+                child.Position -= ((child as BackgroundObject).Rate * deltaPosition, 0);
             }
         }
 
         class BackgroundObject : Entity
         {
-            public override Brush Fill => Brushes.DarkGray;
+            public int Alpha;
+            public double Rate;
+            public override Brush Fill => new SolidBrush(Color.FromArgb(Alpha, Color.DarkGray));
         }
     }
 }
