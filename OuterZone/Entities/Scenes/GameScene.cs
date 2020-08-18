@@ -26,6 +26,7 @@ namespace OuterZone.Entities.Scenes
             background = new Background
             {
                 Random = new Random(),
+                OffCenter = 1,
             };
             Children.Add(background);
 

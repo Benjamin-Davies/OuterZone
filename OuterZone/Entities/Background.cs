@@ -17,6 +17,7 @@ namespace OuterZone.Entities
         public override Brush Fill => Brushes.Transparent;
 
         public double PlayerPosition { get; set; }
+        public double OffCenter { get; set; }
         private double lastPlacePosition;
         private double lastPlayerPosition;
         public Random Random { get; set; }
@@ -41,6 +42,14 @@ namespace OuterZone.Entities
             foreach (var child in Children)
             {
                 child.Position -= ((child as BackgroundObject).Rate * deltaPosition, 0);
+            }
+
+            for (int i = Children.Count - 1; i >= 0; i--)
+            {
+                if (Math.Abs(Children[i].Position.X - OffCenter*PlayerPosition) > 20)
+                {
+                    Children.RemoveAt(i);
+                }
             }
         }
 
