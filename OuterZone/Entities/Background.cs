@@ -32,7 +32,7 @@ namespace OuterZone.Entities
                     Position = Position + Size * (1, Random.NextDouble()),
                 });
 
-                lastPlacePosition += 3;
+                lastPlacePosition += 2;
             }
 
             var deltaPosition = PlayerPosition - lastPlayerPosition;

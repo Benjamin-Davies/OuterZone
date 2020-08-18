@@ -15,12 +15,19 @@ namespace OuterZone.Entities.Scenes
         readonly Explorer explorer = new Explorer();
         readonly Floor floor = new Floor();
         readonly Tutorial tutorial;
+        readonly Background background;
 
         public int Score => (int)(explorer.Position.X * 10);
 
         public GameScene(ISceneManager sceneManager) : base(sceneManager)
         {
             floor.Position += (0, 10);
+
+            background = new Background
+            {
+                Random = new Random(),
+            };
+            Children.Add(background);
 
             Children.Add(explorer);
             Children.Add(floor);
@@ -46,6 +53,8 @@ namespace OuterZone.Entities.Scenes
                 SceneManager.NextScene(typeof(DeathScene));
             }
 
+            background.PlayerPosition = explorer.Position.X;
+
             tutorial?.Update(dt);
         }
 
@@ -58,6 +67,9 @@ namespace OuterZone.Entities.Scenes
             matrix.Scale(scale, scale);
             matrix.Translate((float)(3.0 - explorer.Position.X), 0);
             g.Transform = matrix;
+
+            background.ScreenSize = Size / scale;
+            background.Position = (explorer.Position.X - 3.0, 0);
 
             base.Draw(g);
 
