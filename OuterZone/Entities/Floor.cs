@@ -39,8 +39,9 @@ namespace OuterZone.Entities
 
                 Children.Add(new FloorSection
                 {
-                    Position = (NextPosition, Position.Y),
-                });
+                    Position = (NextPosition, Position.Y - 0.25 * Random.Next(0, 3)),
+                    ColorVariant = Random.Next(3),
+                }); ;
             }
             NextPosition += FloorSection.Width;
         }

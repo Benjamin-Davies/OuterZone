@@ -8,7 +8,7 @@ namespace OuterZone.Entities
     class Explorer : Base.PhysicsEntity
     {
         public override Vector Size => (1, 2);
-        public override Brush Fill => Brushes.Red;
+        public override Brush Fill => Brushes.LightYellow;
 
         public readonly double WalkingSpeed = 10;
         public readonly double WalkingAcceleration = 50;
