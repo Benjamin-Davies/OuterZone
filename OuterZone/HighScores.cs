@@ -44,7 +44,7 @@ namespace OuterZone
 
         async public Task<List<HighScore>> GetHighScores()
         {
-            var highScoresJson = await httpClient.GetStringAsync($"{databaseUrl}/documents/high-scores");
+            var highScoresJson = await httpClient.GetStringAsync($"{databaseUrl}/documents/high-scores?orderBy=score desc");
             var highScores = JsonConvert.DeserializeObject<DocumentsList<HighScoreDocument>>(highScoresJson, jsonSettings);
             return highScores.Documents.Select(s => (HighScore) s).ToList();
         }
