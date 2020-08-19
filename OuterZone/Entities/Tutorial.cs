@@ -25,14 +25,14 @@ namespace OuterZone.Entities
             {
                 case State.MoveRight:
                     if (explorer.Position.X > 2)
-                        state = State.MoveLeft;
-                    break;
-                case State.MoveLeft:
-                    if (explorer.Position.X < 0)
                         state = State.Jump;
                     break;
                 case State.Jump:
                     if (explorer.Position.Y < 6)
+                        state = State.MoveLeft;
+                    break;
+                case State.MoveLeft:
+                    if (explorer.Position.X < 0)
                         state = State.GoodJob;
                     break;
             }
@@ -76,8 +76,8 @@ namespace OuterZone.Entities
         private enum State
         {
             MoveRight,
-            MoveLeft,
             Jump,
+            MoveLeft,
             GoodJob,
             Pause,
             Done,
