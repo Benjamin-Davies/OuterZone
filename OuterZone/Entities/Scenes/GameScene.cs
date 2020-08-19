@@ -99,6 +99,11 @@ namespace OuterZone.Entities.Scenes
                     if (down)
                         explorer.Jump();
                     break;
+                case Keys.Escape:
+                case Keys.Enter:
+                    if (down)
+                        SceneManager.NextScene(typeof(PauseScene));
+                    break;
             }
         }
     }

@@ -42,6 +42,10 @@ namespace OuterZone.Entities
                 state = State.Done;
                 Settings.Default.CompletedTutorial = true;
             }
+            else if (explorer.Position.X > 15)
+            {
+                state = State.Pause;
+            }
         }
 
         public override void Draw(Graphics g)
@@ -62,6 +66,9 @@ namespace OuterZone.Entities
                 case State.GoodJob:
                     text = "Good Job!\nNow get as far right as possible,\nbut remember to jump over the holes!";
                     break;
+                case State.Pause:
+                    text = "You can press escape at any time to pause.";
+                    break;
             }
             g.DrawString(text, tipFont, Brushes.White, new PointF(20, 100));
         }
@@ -72,6 +79,7 @@ namespace OuterZone.Entities
             MoveLeft,
             Jump,
             GoodJob,
+            Pause,
             Done,
         }
     }

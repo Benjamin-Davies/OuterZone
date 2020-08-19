@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Background.cs" />
+    <Compile Include="Entities\Scenes\PauseScene.cs" />
     <Compile Include="Entities\TextInput.cs" />
     <Compile Include="Entities\Scenes\HighScoresScene.cs" />
     <Compile Include="Entities\Tutorial.cs" />

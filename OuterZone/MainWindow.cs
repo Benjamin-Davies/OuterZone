@@ -92,7 +92,12 @@ namespace OuterZone
                 dataEnumerator.MoveNext();
                 return dataEnumerator.Current;
             }).ToArray();
-            currentScene = constructor.Invoke(parameters) as Scene;
+            NextScene(constructor.Invoke(parameters) as Scene);
+        }
+
+        public void NextScene(Scene scene)
+        {
+            currentScene = scene;
         }
 
         private void MainWindow_MouseMove(object sender, MouseEventArgs e)
