@@ -7,11 +7,11 @@ namespace OuterZone.Entities
     {
         private const int MaxListCount = 20;
         private const int DiscardCount = 5;
-        private const double InitialProbability = 0.1;
         private const double FirstGap = 5;
 
         private double NextPosition = -20;
-        private double TileProbability = InitialProbability;
+        private double TileProbability = 0.1;
+        private double InitialProbability => NextPosition / 10000 + 0.1;
         private readonly Random Random = new Random();
 
         public void Generate(double rightEdge)
