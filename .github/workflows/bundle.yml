@@ -32,7 +32,8 @@ jobs:
           args: install pandoc
 
       - name: Compile the wiki
-        run: ./compile-wiki.ps1
+        run: pandoc @(get-childitem -name *.md) -t html
+        working-directory: ./wiki/
 
       - name: Release!
         uses: actions/create-release@v1
