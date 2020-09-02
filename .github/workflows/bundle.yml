@@ -29,7 +29,7 @@ jobs:
       - name: Install pandoc
         uses: crazy-max/ghaction-chocolatey@v1
         with:
-          args: install pandoc miktex
+          args: install pandoc
 
       - name: Compile wiki
-        run: pandoc wiki/*.md -t pdf
+        run: powershell pandoc wiki/*.md -t html
