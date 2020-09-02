@@ -16,5 +16,11 @@ jobs:
       - name: Restore dependencies
         run: nuget restore OuterZone.sln
 
-      - name: Build the solutioln
+      - name: Build the solution
         run: msbuild OuterZone.sln
+
+      - name: Checkout the wiki
+        uses: actions/checkout@v2
+        with:
+          repository: https://github.com/Benjamin-Davies/OuterZone.wiki.git
+          path: wiki/
