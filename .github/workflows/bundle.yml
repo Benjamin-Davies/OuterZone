@@ -24,7 +24,7 @@ jobs:
         with:
           repository: Benjamin-Davies/OuterZone.wiki.git
           ref: master
-          path: wiki/
+          path: ./wiki/
       
       - name: Install pandoc
         uses: crazy-max/ghaction-chocolatey@v1
@@ -32,4 +32,10 @@ jobs:
           args: install pandoc
 
       - name: Compile wiki
-        run: powershell pandoc wiki/*.md -t html
+        run: pandoc * -t html
+        working-directory: ./wiki/
+
+      - name: Release!
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
