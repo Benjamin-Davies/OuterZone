@@ -31,7 +31,7 @@ jobs:
         with:
           args: install pandoc
 
-      - name: Compile wiki
+      - name: Compile the wiki
         run: pandoc * -t html
         working-directory: ./wiki/
 
