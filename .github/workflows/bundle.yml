@@ -23,6 +23,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Benjamin-Davies/OuterZone.wiki.git
+          ref: master
           path: wiki/
       
       - name: Install pandoc
