@@ -29,7 +29,7 @@ jobs:
       - name: Install pandoc
         uses: crazy-max/ghaction-chocolatey@v1
         with:
-          args: install pandoc
+          args: install -r pandoc
 
       - name: Compile the wiki
         run: pandoc @(get-childitem -name *.md) -t html
@@ -39,3 +39,9 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: Automated release bundle
+          draft: false
+          prerelease: false
