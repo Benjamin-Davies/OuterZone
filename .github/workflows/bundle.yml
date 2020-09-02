@@ -24,3 +24,11 @@ jobs:
         with:
           repository: Benjamin-Davies/OuterZone.wiki.git
           path: wiki/
+      
+      - name: Install pandoc
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: install pandoc miktex
+
+      - name: Compile wiki
+        run: pandoc wiki/*.md -t pdf
