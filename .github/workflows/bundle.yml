@@ -36,6 +36,7 @@ jobs:
         working-directory: ./wiki/
 
       - name: Release!
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,3 +46,16 @@ jobs:
           body: Automated release bundle
           draft: false
           prerelease: false
+
+      - name: Compress the files
+        run: Compress-Archive ./ ./bundle.zip
+
+      - name: Upload the files
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./bundle.zip
+          asset_name: bundle.zip
+          asset_content_type: application/zip
