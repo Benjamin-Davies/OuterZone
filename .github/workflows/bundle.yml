@@ -22,5 +22,5 @@ jobs:
       - name: Checkout the wiki
         uses: actions/checkout@v2
         with:
-          repository: https://github.com/Benjamin-Davies/OuterZone.wiki.git
+          repository: Benjamin-Davies/OuterZone.wiki.git
           path: wiki/
