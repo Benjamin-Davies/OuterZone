@@ -1,0 +1,1 @@
+pandoc -o html wiki/*.md
