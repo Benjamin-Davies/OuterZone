@@ -35,13 +35,17 @@ jobs:
         run: pandoc @(get-childitem -name *.md) -t html
         working-directory: ./wiki/
 
+      - name: Get the short commit hash
+        id: short_sha
+        run: "::set-output name=sha8::{0}" -f $GITHUB_SHA.substring(0, 8)
+
       - name: Release!
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha }}
+          tag_name: ${{ steps.short_sha.outputs.sha8 }}
           release_name: Release ${{ github.sha }}
           body: Automated release bundle
           draft: false
