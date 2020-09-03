@@ -10,14 +10,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: microsoft/setup-msbuild@v1
-      - uses: NuGet/setup-nuget@v1
+      #- uses: microsoft/setup-msbuild@v1
+      #- uses: NuGet/setup-nuget@v1
 
-      - name: Restore dependencies
-        run: nuget restore OuterZone.sln
+      #- name: Restore dependencies
+      #  run: nuget restore OuterZone.sln
 
-      - name: Build the solution
-        run: msbuild OuterZone.sln
+      #- name: Build the solution
+      #  run: msbuild OuterZone.sln
 
       - name: Checkout the wiki
         uses: actions/checkout@v2
@@ -26,18 +26,18 @@ jobs:
           ref: master
           path: ./wiki/
       
-      - name: Install pandoc
-        uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install -r pandoc
+      #- name: Install pandoc
+      #  uses: crazy-max/ghaction-chocolatey@v1
+      #  with:
+      #    args: install -r pandoc
 
-      - name: Compile the wiki
-        run: pandoc @(get-childitem -name *.md) -t html
-        working-directory: ./wiki/
+      #- name: Compile the wiki
+      #  run: pandoc @(get-childitem -name *.md) -t html
+      #  working-directory: ./wiki/
 
       - name: Get the short commit hash
         id: short_sha
-        run: '"::set-output name=sha8::{0}" -f $GITHUB_SHA.substring(0, 8)'
+        run: '"::set-output name=sha8::{0}" -f ${{ github.sha }}.substring(0, 8)'
 
       - name: Release!
         id: create_release
