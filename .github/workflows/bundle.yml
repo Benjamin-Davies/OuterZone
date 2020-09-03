@@ -36,7 +36,7 @@ jobs:
         run: |
           ForEach ($file in Get-ChildItem -name *.md) {
             $name = $file.substring(0, $file.length - 3)
-            pandoc $file -o $name`.html -H style.html -M title:$name
+            pandoc $file -o $name`.html -H ../style.html -M title:$name
           }
         working-directory: ./wiki/
 
