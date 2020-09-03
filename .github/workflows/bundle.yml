@@ -37,7 +37,7 @@ jobs:
 
       - name: Get the short commit hash
         id: short_sha
-        run: '"::set-output name=sha8::{0}" -f ${{ github.sha }}.substring(0, 8)'
+        run: '"::set-output name=sha8::{0}" -f "${{ github.sha }}".substring(0, 8)'
 
       - name: Release!
         id: create_release
