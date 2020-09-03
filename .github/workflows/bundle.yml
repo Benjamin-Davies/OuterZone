@@ -32,7 +32,7 @@ jobs:
           args: install -r pandoc
 
       - name: Compile the wiki
-        run: pandoc @(get-childitem -name *.md) -t html
+        run: ForEach ($file in Get-ChildItem -name *.md) { pandoc $file -o $file.html }
         working-directory: ./wiki/
 
       - name: Get the short commit hash
