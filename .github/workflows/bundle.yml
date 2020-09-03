@@ -34,7 +34,7 @@ jobs:
       - name: Compile the wiki
         run: |
           ForEach ($file in Get-ChildItem -name *.md) {
-            pandoc $file -o $($file.substring($length - 3, $length)).html
+            pandoc $file -o $($file.substring($file.length - 3, $file.length)).html
           }
         working-directory: ./wiki/
 
