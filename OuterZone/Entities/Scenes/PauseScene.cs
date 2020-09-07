@@ -68,5 +68,17 @@ namespace OuterZone.Entities.Scenes
 
             g.Transform = oldMatrix;
         }
+
+        public override void KeyChange(Keys key, bool down, bool shift)
+        {
+            switch (key)
+            {
+                case Keys.Escape:
+                case Keys.Enter:
+                    if (down)
+                        SceneManager.NextScene(GameScene);
+                    break;
+            }
+        }
     }
 }
