@@ -61,11 +61,29 @@ namespace OuterZone.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Boing_sound {
+            get {
+                return ResourceManager.GetStream("Boing_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to outer-zone.
         /// </summary>
         internal static string FirebaseProject {
             get {
                 return ResourceManager.GetString("FirebaseProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Plop {
+            get {
+                return ResourceManager.GetStream("Plop", resourceCulture);
             }
         }
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace OuterZone.Entities.Scenes
         readonly Floor floor = new Floor();
         readonly Tutorial tutorial;
         readonly Background background;
+        readonly SoundPlayer boingSound;
 
         public int Score => (int)(explorer.Position.X * 10);
 
@@ -37,6 +39,8 @@ namespace OuterZone.Entities.Scenes
             {
                 tutorial = new Tutorial(explorer);
             }
+
+            boingSound = new SoundPlayer(Resources.Boing_sound);
         }
 
         public override void Update(double dt)
@@ -97,7 +101,10 @@ namespace OuterZone.Entities.Scenes
                 case Keys.Space:
                 case Keys.Up:
                     if (down)
+                    {
+                        boingSound.Play();
                         explorer.Jump();
+                    }
                     break;
                 case Keys.Escape:
                 case Keys.Enter:
