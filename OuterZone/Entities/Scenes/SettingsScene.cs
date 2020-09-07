@@ -8,7 +8,7 @@ namespace OuterZone.Entities.Scenes
 {
     class SettingsScene : Scene
     {
-        private string Message => "Settings";
+        private string Message => "Change Username";
 
         private readonly TextInput UsernameInput;
         private readonly Button ExitToMenuButton;

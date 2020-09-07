@@ -35,7 +35,7 @@ namespace OuterZone.Entities.Scenes
 
             SettingsButton = new Button
             {
-                Text = "Settings",
+                Text = "Change Username",
                 Position = (-4, 0.5),
             };
             SettingsButton.OnClick += SettingsButton_OnClick;
