@@ -18,6 +18,9 @@ namespace OuterZone.Entities.Scenes
         readonly Tutorial tutorial;
         readonly Background background;
         readonly SoundPlayer boingSound;
+        readonly SoundPlayer plopSound;
+        readonly SoundPlayer oofSound;
+        bool wasTouchingGround;
 
         public int Score => (int)(explorer.Position.X * 10);
 
@@ -41,6 +44,8 @@ namespace OuterZone.Entities.Scenes
             }
 
             boingSound = new SoundPlayer(Resources.Boing_sound);
+            plopSound = new SoundPlayer(Resources.Plop);
+            oofSound = new SoundPlayer(Resources.Minecraft_death_sound);
         }
 
         public override void Update(double dt)
@@ -53,8 +58,15 @@ namespace OuterZone.Entities.Scenes
             floor.Generate(explorer.Position.X + Size.X / scale);
             explorer.CollideWith(floor);
 
+            if (explorer.IsTouching && !wasTouchingGround)
+            {
+                plopSound.Play();
+            }
+            wasTouchingGround = explorer.IsTouching;
+
             if (explorer.Position.Y > 12)
             {
+                oofSound.Play();
                 SceneManager.NextScene(typeof(DeathScene));
             }
 

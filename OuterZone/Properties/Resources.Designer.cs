@@ -81,6 +81,15 @@ namespace OuterZone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Minecraft_death_sound {
+            get {
+                return ResourceManager.GetStream("Minecraft_death_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Plop {
             get {
                 return ResourceManager.GetStream("Plop", resourceCulture);

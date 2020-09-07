@@ -107,5 +107,8 @@
   <ItemGroup>
     <None Include="Resources\Plop.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minecraft-death-sound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
